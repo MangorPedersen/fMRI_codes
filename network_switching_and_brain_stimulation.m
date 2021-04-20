@@ -126,23 +126,38 @@ for thr = 1:length(network_density_thr) % loop over each pre-defined network den
             for i = 1:N_subs % loop over each participant
                 timings_temp = cell2mat(timings(i)); % Find stimulation timings for participant # i
                 
-                % find accurate timing information, for each of the 16 epochs
-                epoch_timing{1} = 1:10;
-                epoch_timing{2} = timings_temp(1):timings_temp(10);
-                epoch_timing{3} = timings_temp(10)+2:(timings_temp(10)+2)+9;
-                epoch_timing{4} = timings_temp(11):timings_temp(20);
-                epoch_timing{5} = timings_temp(20)+2:(timings_temp(20)+2)+9;
-                epoch_timing{6} = timings_temp(21):timings_temp(30);
-                epoch_timing{7} = timings_temp(30)+2:(timings_temp(30)+2)+9;
-                epoch_timing{8} = timings_temp(31):timings_temp(40);
-                epoch_timing{9} = timings_temp(40)+2:(timings_temp(40)+2)+9;
-                epoch_timing{10} = timings_temp(41):timings_temp(50);
-                epoch_timing{11} = timings_temp(50)+2:(timings_temp(50)+2)+9;
-                epoch_timing{12} = timings_temp(51):timings_temp(60);
-                epoch_timing{13} = timings_temp(60)+2:(timings_temp(60)+2)+9;
-                epoch_timing{14} = timings_temp(61):timings_temp(70);
-                epoch_timing{15} = timings_temp(70)+2:(timings_temp(70)+2)+9;
-                epoch_timing{16} = timings_temp(71):timings_temp(80);
+                % find accurate timing information, for each of the 16 epochs, excluding first 3 time-points of each epoch 
+                epoch_timing{1} = 4:10;
+                epoch_timing_tmp = timings_temp(1):timings_temp(10);
+                epoch_timing{2} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(10)+2:(timings_temp(10)+2)+9;
+                epoch_timing{3} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(11):timings_temp(20);
+                epoch_timing{4} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(20)+2:(timings_temp(20)+2)+9;
+                epoch_timing{5} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(21):timings_temp(30);
+                epoch_timing{6} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(30)+2:(timings_temp(30)+2)+9;
+                epoch_timing{7} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(31):timings_temp(40);
+                epoch_timing{8} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(40)+2:(timings_temp(40)+2)+9;
+                epoch_timing{9} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(41):timings_temp(50);
+                epoch_timing{10} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(50)+2:(timings_temp(50)+2)+9;
+                epoch_timing{11} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(51):timings_temp(60);
+                epoch_timing{12} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(60)+2:(timings_temp(60)+2)+9;
+                epoch_timing{13} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(61):timings_temp(70);
+                epoch_timing{14} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(70)+2:(timings_temp(70)+2)+9;
+                epoch_timing{15} = epoch_timing_tmp(4:end);
+                epoch_timing_tmp = timings_temp(71):timings_temp(80);
+                epoch_timing{16} = epoch_timing_tmp(4:end);
                 
                 % retrieve switching information, for subject i, and the specific network parameters within the loop
                 network_switching_array = cell2mat(switching(thr,p1,p2,i));
